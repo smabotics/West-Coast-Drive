@@ -10,8 +10,6 @@ public class RobotMap {
 		JOYB_Y = 4,
 		JOYB_LB = 5,
 		JOYB_RB = 6,
-		JOYB_LT = 7,
-		JOYB_RT = 8,
 		JOYA_LX = 0,
 		JOYA_LY = 1,
 		JOYA_RX = 4,
@@ -21,14 +19,14 @@ public class RobotMap {
 		R_Front = 2,   			//Victor 888, Right Front Drive Base
 		L_Rear = 8,  			//Victor SP, Left Rear Drive Base
 		R_Rear = 1,   			//Victor SP, Right Rear Drive Base
-		Claw = 0,				//Talon SR, Claw Motor (VEX 393)
-		Wrist = 4,				//Talon SR, Wrist Motor (VEX 393)
-		Elevator = 5;			//Talon SR, Elevator Motor (VEX 393)
+		Claw = 3,				//Victor SP, Claw Motor (VEX 393)
+		Wrist = 4,				//VIctor SP, Wrist Motor (VEX 393)
+		Elevator = 5;			//Victor SP, Elevator Motor (VEX 393)
 	// Setting up Distance Sensor (MAXSONAR XL-EZ/AE MB1200) & Wrist/Elevator Potentiometers
 	// Number is ANALOG Port on Roborio
 	public static int Sonar = 1,
 		WristPot = 2,
-		ElevPot = 0;
+		ElevPot = 3;
 	// Setting Up Encoders (AM3132, installed on Tough-Box Mini Drive Shaft)
 	// One encoder rotation is one wheel rotation.  Number is DIO Port on Roborio
 	public static int R_Encoder_A = 2,
