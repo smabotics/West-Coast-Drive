@@ -14,22 +14,23 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
-	public static OI oi;
 	public static Claw claw;
 	public static Wrist wrist;
 	public static Elevator elevator;
 	public static DriveBase driveBase;
+	public static OI oi;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	@Override
 	public void robotInit() {
-		oi = new OI();
+		
 		claw = new Claw();
 		wrist = new Wrist();
 		elevator = new Elevator();
 		driveBase = new DriveBase();
+		oi = new OI();
 		//chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		//SmartDashboard.putData("Auto mode", chooser);

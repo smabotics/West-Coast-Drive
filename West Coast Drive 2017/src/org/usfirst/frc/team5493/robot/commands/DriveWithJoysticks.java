@@ -12,7 +12,7 @@ public class DriveWithJoysticks extends Command {
     protected void initialize() {
     }
     protected void execute() {
-    	Robot.driveBase.tankDrive(Robot.oi.getLeftSpeed(), Robot.oi.getRightSpeed());
+    	Robot.driveBase.tankDrive(-Robot.oi.getLeftSpeed(), -Robot.oi.getRightSpeed());
     	// getLeftSpeed and getRightSpeed => methods in OI.java
     }
     protected boolean isFinished() {

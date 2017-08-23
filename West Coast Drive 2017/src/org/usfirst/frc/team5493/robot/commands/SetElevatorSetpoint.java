@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class SetElevatorSetpoint extends Command {
 	private double setpoint;
-    public SetElevatorSetpoint() {
+    public SetElevatorSetpoint(double setpoint) {
     	requires(Robot.elevator);
     	this.setpoint = setpoint;
     }

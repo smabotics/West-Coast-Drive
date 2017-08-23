@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveDistanceFrom extends Command {
 	double setpoint;  // create a setpoint variable in Inches.  It will be passed
-					  // as an argument when DriveDistance From is called
+					  // as an argument when DriveDistanceFrom is called
 
     public DriveDistanceFrom(double setpoint) {
     	requires(Robot.driveBase);  // requires DriveBase subsystem
@@ -18,13 +18,14 @@ public class DriveDistanceFrom extends Command {
     protected void execute() {
     }
     protected boolean isFinished() {
-		return Math.abs(Robot.driveBase.getSonarPosition() - setpoint) < .05;
-        // creates a 'range' +/- .05 from setpoint that ends command
+		return Math.abs(Robot.driveBase.getSonarPosition() - setpoint) < 1.0;
+        // creates a 'range' +/- 1.0 from setpoint that ends command
     }
     protected void end() {
-    	Robot.driveBase.disable();  // if command is finished, disable robot
+    	Robot.driveBase.tankDrive(0.0, 0.0);
+    	//Robot.driveBase.disable();  // if command is finished, stop tankDrive motors
     }
     protected void interrupted() {
-    	Robot.driveBase.disable();  // if command is interrupted, disable robot
+    	Robot.driveBase.disable();  // if command is interrupted, disable DriveBase
     }
 }

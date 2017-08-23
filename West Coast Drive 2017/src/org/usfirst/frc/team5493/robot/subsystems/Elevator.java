@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 public class Elevator extends PIDSubsystem {
-	private static final double Kp = 4.0,  // Uses proportional control
+	private static final double Kp = 1.0,  // Uses proportional control
 		Ki = 0.0,      // NOT using integral control
 		Kd = 0.0,      // NOT using differential control
 		BOTTOM = 2.6,  // Voltage on Potentiometer @ Elevator Bottom

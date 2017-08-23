@@ -8,11 +8,11 @@ public class ClawClose extends Command {
 
     public ClawClose() {
     	requires(Robot.claw);  // requires the Claw Subsystem
+    }
+    protected void initialize() {
     	setTimeout(1.0);  // used timer to control claw close;
     	                  // a little longer than claw open to 
     	                  // ensure claw fully closes
-    }
-    protected void initialize() {
     }
     protected void execute() {
     	Robot.claw.close();  // uses the close method created in 
