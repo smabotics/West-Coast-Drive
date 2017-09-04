@@ -6,6 +6,7 @@ import org.usfirst.frc.team5493.robot.subsystems.Claw;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBaseNotPID;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBaseSonarPID;
 import org.usfirst.frc.team5493.robot.subsystems.Elevator;
+import org.usfirst.frc.team5493.robot.subsystems.IDriveBaseSubsystem;
 import org.usfirst.frc.team5493.robot.subsystems.Wrist;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -20,8 +21,8 @@ public class Robot extends IterativeRobot {
 	public static Claw claw;
 	public static Wrist wrist;
 	public static Elevator elevator;
-	public static DriveBaseNotPID driveBaseNotPid;
-	public static DriveBaseSonarPID driveBaseSonarPid;
+	public static IDriveBaseSubsystem driveBaseNotPid;
+	public static IDriveBaseSubsystem driveBaseSonarPid;
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -36,7 +37,7 @@ public class Robot extends IterativeRobot {
 		driveBaseNotPid = new DriveBaseNotPID();
 //		driveBaseSonarPid = new DriveBaseSonarPID();
 		oi = new OI();
-		chooser.addDefault("Default Auto", new DriveStraightTimed(4));
+		chooser.addDefault("Default Auto", new DriveStraightTimed(driveBaseNotPid, 5));
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 	}

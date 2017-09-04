@@ -2,6 +2,8 @@ package org.usfirst.frc.team5493.robot.subsystems;
 
 import org.usfirst.frc.team5493.robot.RobotMap;
 import org.usfirst.frc.team5493.robot.commands.DriveWithJoysticks;
+import org.usfirst.frc.team5493.robot.subsystems.utils.EncoderAdjustment;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
@@ -10,7 +12,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
-public class DriveBaseSonarPID extends PIDSubsystem {
+public class DriveBaseSonarPID extends PIDSubsystem implements IDriveBaseSubsystem {
 	SpeedController lFront = new Victor(RobotMap.L_Front);
 	SpeedController rFront = new Victor(RobotMap.R_Front);
 	SpeedController lRear = new Victor(RobotMap.L_Rear);
@@ -27,7 +29,7 @@ public class DriveBaseSonarPID extends PIDSubsystem {
     	super("PIDSonarDriveBase", Kp, Ki, Kd);
     }
     public void initDefaultCommand() {
-        setDefaultCommand(new DriveWithJoysticks());  // default is Joystick Driving
+        setDefaultCommand(new DriveWithJoysticks((IDriveBaseSubsystem)this));  // default is Joystick Driving
     }
     protected double returnPIDInput() {
         return sonar.getVoltage();  // PID input comes from sonar voltage
@@ -51,4 +53,19 @@ public class DriveBaseSonarPID extends PIDSubsystem {
     	return getEncoderAverage()*Math.PI*4.0/1440.0;  // 1440 Pulses per Revolution for E4T;
     					// PI * wheel diameter (4.0 inches) per Revolution
     }
+	@Override
+	public boolean doesSupportEncoder() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public EncoderAdjustment determineAdjusments() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void resetEncoders() {
+		// TODO Auto-generated method stub
+		
+	}
 }
