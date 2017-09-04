@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team5493.robot;
 
-import org.usfirst.frc.team5493.robot.OI;
 import org.usfirst.frc.team5493.robot.subsystems.Claw;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
 import org.usfirst.frc.team5493.robot.subsystems.Elevator;
