@@ -9,23 +9,23 @@ public class DriveToDistance extends Command {
 					  // argument when DriveToDistance called
 
     public DriveToDistance(double setpoint) {
-    	requires(Robot.driveBase);  // requires DriveBase subsystem
+    	requires(Robot.driveBaseSonarPid);  // requires DriveBase subsystem
     	this.setpoint = setpoint;
     }
     protected void initialize() {
-    	Robot.driveBase.setSetpoint(setpoint);
-    	Robot.driveBase.enable();
+    	Robot.driveBaseSonarPid.setSetpoint(setpoint);
+    	Robot.driveBaseSonarPid.enable();
     }
     protected void execute() {
     }
     protected boolean isFinished() {
-		return Math.abs(Robot.driveBase.getEncoderDistance() - setpoint) < .05;
+		return Math.abs(Robot.driveBaseSonarPid.getEncoderDistance() - setpoint) < .05;
         // creates a 'range' +/- .05 from setpoint that ends command
     }
     protected void end() {
-    	Robot.driveBase.disable();
+    	Robot.driveBaseSonarPid.disable();
     }
     protected void interrupted() {
-    	Robot.driveBase.disable();
+    	Robot.driveBaseSonarPid.disable();
     }
 }

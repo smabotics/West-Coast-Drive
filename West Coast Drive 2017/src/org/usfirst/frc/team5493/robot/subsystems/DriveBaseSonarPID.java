@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
-public class DriveBase extends PIDSubsystem {
+public class DriveBaseSonarPID extends PIDSubsystem {
 	SpeedController lFront = new Victor(RobotMap.L_Front);
 	SpeedController rFront = new Victor(RobotMap.R_Front);
 	SpeedController lRear = new Victor(RobotMap.L_Rear);
@@ -23,8 +23,8 @@ public class DriveBase extends PIDSubsystem {
 	private Encoder rightEncoder = new Encoder(RobotMap.R_Encoder_A, RobotMap.R_Encoder_B);
 	private AnalogInput sonar = new AnalogInput(RobotMap.Sonar);
     // Initialize your subsystem here
-    public DriveBase() {
-    	super("DriveBase", Kp, Ki, Kd);
+    public DriveBaseSonarPID() {
+    	super("PIDSonarDriveBase", Kp, Ki, Kd);
     }
     public void initDefaultCommand() {
         setDefaultCommand(new DriveWithJoysticks());  // default is Joystick Driving
@@ -41,7 +41,7 @@ public class DriveBase extends PIDSubsystem {
     public double getSonarPosition()  {
     	double position =  sonar.getVoltage()*40.31;  // need to multiply raw voltage (V)
     							   // by 40.31 to get position in inches
-    	DriverStation.reportWarning("Sonar Position: " + position, true);
+    	DriverStation.reportWarning("PIDSonarDriveBase Sonar Position: " + position, true);
     	return position;
     }
     public double getEncoderAverage()  {

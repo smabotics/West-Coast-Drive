@@ -1,22 +1,27 @@
 
 package org.usfirst.frc.team5493.robot;
 
+import org.usfirst.frc.team5493.robot.commands.DriveStraightTimed;
 import org.usfirst.frc.team5493.robot.subsystems.Claw;
-import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
+import org.usfirst.frc.team5493.robot.subsystems.DriveBaseNotPID;
+import org.usfirst.frc.team5493.robot.subsystems.DriveBaseSonarPID;
 import org.usfirst.frc.team5493.robot.subsystems.Elevator;
 import org.usfirst.frc.team5493.robot.subsystems.Wrist;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
 	public static Claw claw;
 	public static Wrist wrist;
 	public static Elevator elevator;
-	public static DriveBase driveBase;
+	public static DriveBaseNotPID driveBaseNotPid;
+	public static DriveBaseSonarPID driveBaseSonarPid;
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -28,11 +33,12 @@ public class Robot extends IterativeRobot {
 		claw = new Claw();
 		wrist = new Wrist();
 		elevator = new Elevator();
-		driveBase = new DriveBase();
+		driveBaseNotPid = new DriveBaseNotPID();
+//		driveBaseSonarPid = new DriveBaseSonarPID();
 		oi = new OI();
-		//chooser.addDefault("Default Auto", new ExampleCommand());
+		chooser.addDefault("Default Auto", new DriveStraightTimed(4));
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		//SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putData("Auto mode", chooser);
 	}
 
 	/**

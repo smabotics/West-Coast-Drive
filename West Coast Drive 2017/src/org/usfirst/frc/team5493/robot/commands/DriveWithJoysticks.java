@@ -7,12 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveWithJoysticks extends Command {
 
     public DriveWithJoysticks() {
-    	requires(Robot.driveBase);  // requires the DriveBase subsystem
+    	requires(Robot.driveBaseNotPid);  // requires the DriveBase subsystem
     }
     protected void initialize() {
     }
     protected void execute() {
-    	Robot.driveBase.tankDrive(-Robot.oi.getLeftSpeed(), -Robot.oi.getRightSpeed());
+    	Robot.driveBaseNotPid.tankDrive(-Robot.oi.getLeftSpeed(), -Robot.oi.getRightSpeed());
     	// getLeftSpeed and getRightSpeed => methods in OI.java
     }
     protected boolean isFinished() {
